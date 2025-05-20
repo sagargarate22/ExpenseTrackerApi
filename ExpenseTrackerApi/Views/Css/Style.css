@@ -1,0 +1,148 @@
+﻿
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container-lg {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+h2 {
+    color: #333333;
+}
+
+p {
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.6;
+}
+
+.otp {
+    display: inline-block;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    border-radius: 5px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #999999;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+}
+
+a {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+
+/**/
+.email-container {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+.total-expense {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.user-info {
+    margin-bottom: 15px;
+}
+
+
+.report-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 700px;
+}
+
+
+.total-expenses {
+    font-size: 1.8em;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.category-summary {
+    margin-bottom: 30px;
+}
+
+.category-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+    .category-list li {
+        margin-bottom: 12px;
+        font-size: 1.1em;
+    }
+
+.chart-container {
+    position: relative;
+    height: 320px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+h1{
+    color: red;
+}

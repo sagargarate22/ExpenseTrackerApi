@@ -1,0 +1,104 @@
+﻿@model DailyDTO
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Expense Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .user-info {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .total-expense {
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        #no-expenses {
+            background-color: #ffe3e3;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        #expense-summary {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Daily Expense Report</h1>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- User Info -->
+            <div class="user-info">
+                <p><strong>Username:</strong> @Model.Username</p>
+                <p><strong>Email:</strong> @Model.Email</p>
+            </div>
+
+            <!-- Check if expenses were added -->
+            <div id="no-expenses" style="display: @(!@Model.IsExpensesAdded ? "block":"none")">
+                <p>It looks like you haven't added any expenses for today. Keeping track of your daily expenses helps you stay on top of your budget. Make sure to log any purchases or expenditures to get an accurate overview of your spending!</p>
+            </div>
+
+            <div id="expense-summary" style="display: @(@Model.IsExpensesAdded ? "block":"none")">
+                <p class="total-expense">You've successfully logged your expenses for today, with a total of <strong>@Model.Amount</strong>. Staying on top of your spending habits is a key step toward achieving your financial goals. Keep up the great work, and remember every bit counts!</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

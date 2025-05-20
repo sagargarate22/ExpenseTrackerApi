@@ -1,0 +1,93 @@
+﻿@model MonthlyDTO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Expense Report</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .header h2 {
+                color: #007bff;
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+        .total-expenses {
+            text-align: center;
+            font-size: 20px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .category-summary h5 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .category-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .category-list li {
+                font-size: 16px;
+                margin: 5px 0;
+                padding: 5px;
+                background-color: #f9f9f9;
+                border-left: 5px solid #007bff;
+                color: #555;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container report-container">
+        <div class="header">
+            <h2>Monthly Expense Report</h2>
+            <p><strong>@Model.Username</strong> (@Model.Email)</p>
+            <p>For the Month of <strong>@Model.Month</strong></p>
+        </div>
+
+        <div class="total-expenses">
+            Total Expenses: $@Model.TotalExpense
+        </div>
+
+        <!-- Category-wise breakdown -->
+        <div class="category-summary">
+            <h5>Expenses Breakdown by Category</h5>
+            <ul class="category-list">
+                @foreach (var expenses in Model.ExpenseCategory)
+                {
+                    <li>@expenses.CategoryName: $@expenses.Amount</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
