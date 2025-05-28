@@ -11,8 +11,6 @@ A full-featured Expense Tracker Web API that allows users to manage their daily 
 - 📅 Daily email summary at 9 PM (via Hangfire)
 - 🧾 Razor HTML email templates
 - 🔒 User authentication
-- ☁️ File upload/download via Azure Blob Storage
-- 📂 View/download reports as PDF
 - 📤 Email with username, email, and total expense
 - 📅 Monthly report with charts using Bootstrap & HTML
 
@@ -28,7 +26,6 @@ A full-featured Expense Tracker Web API that allows users to manage their daily 
 | ORM              | Entity Framework Core        |
 | Job Scheduling   | Hangfire                     |
 | Email            | SMTP (Outlook) + Razor View  |
-| File Storage     | Azure Blob Storage           |
 
 ---
 
@@ -56,13 +53,6 @@ ExpenseTracker/
   - Category-wise breakdown
   - Visualized with a Pie Chart
 - Built using Razor views for clean, professional formatting
-
----
-
-## 📄 PDF Generation
-
-- View/download expenses in PDF format
-- Files stored in Azure Blob and served via secure links
 
 ---
 
