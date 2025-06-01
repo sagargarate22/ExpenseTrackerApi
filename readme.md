@@ -1,7 +1,6 @@
 # 💸 Expense Tracker
 
 A full-featured Expense Tracker Web API that allows users to manage their daily expenses, track spending by category, and receive email reports. Built using ASP.NET Core, Entity Framework, Hangfire, Razor views, and deployed with Azure Blob Storage for file handling.
-
 ---
 
 ## 🚀 Features
