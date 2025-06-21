@@ -22,8 +22,8 @@ namespace ExpenseTrackerApi.Services.Repository
 
         public DateTime GetStartOfMonth(DateTime currentDate)
         {
-            DateTime startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
-            return startOfMonth.Date;
+            DateTime startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1, 0, 0, 0, DateTimeKind.Utc);
+            return startOfMonth;
         }
 
     }

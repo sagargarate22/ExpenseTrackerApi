@@ -35,7 +35,7 @@ namespace ExpenseTrackerApi.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ExpenseController : ControllerBase
     {
         private readonly APIResponse _response;
