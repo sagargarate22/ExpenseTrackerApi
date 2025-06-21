@@ -11,14 +11,14 @@ namespace ExpenseTrackerApi.Entities
         public int UserId { get; set; }
 
         [MaxLength(15)]
-        public string Username { get; set; }
+        public string Username { get; set; } = string.Empty;
 
         [MaxLength(255)]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
-        public string PasswordHash { get; set; }
+        public string PasswordHash { get; set; } = string.Empty;
 
-        public string passwordSalt { get; set; }
+        public string passwordSalt { get; set; } = string.Empty;
 
         public string? ImagePath { get; set; }
 

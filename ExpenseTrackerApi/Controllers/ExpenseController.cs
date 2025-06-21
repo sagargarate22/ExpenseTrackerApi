@@ -73,8 +73,8 @@ namespace ExpenseTrackerApi.Controllers
                 }
 
                 Expenses expenses = _mapper.Map<Expenses>(dto);
-                expenses.CreatedAt = DateTime.Now;
-                expenses.UpdateAt = DateTime.Now;
+                expenses.CreatedAt = DateTime.UtcNow;
+                expenses.UpdateAt = DateTime.UtcNow;
                 expenses.ExpenseCategoryId = dto.ExpenseType;
                 expenses.UserId = userId;
                 await _expenseService.CreateAsync(expenses);
@@ -160,7 +160,7 @@ namespace ExpenseTrackerApi.Controllers
                 }
 
                 _mapper.Map(dto, expense);
-                expense.UpdateAt = DateTime.Now;    
+                expense.UpdateAt = DateTime.UtcNow;    
                 await _expenseService.UpdateAsync(expense);
                 _response.Status = true;
                 _response.StatusCode = HttpStatusCode.OK;
@@ -188,8 +188,8 @@ namespace ExpenseTrackerApi.Controllers
         {
             try
             {
-                var currentDate = DateTime.Now.Date;
-                var startDate = DateTime.Now.Date;
+                var currentDate = DateTime.UtcNow.Date;
+                var startDate = DateTime.UtcNow.Date;
                 if(filter == Filter.Weekly)
                 {
                     startDate = _expenseService.GetStartOfWeek(startDate);
@@ -258,7 +258,7 @@ namespace ExpenseTrackerApi.Controllers
             {
                 var userId = _userService.GetCurrentUserId();
                 //var userId = 2;
-                var currentDate = DateTime.Now;
+                var currentDate = DateTime.UtcNow;
                 var expense = await _expenseService.GetRecordsAsync(e => e.ExpenseDate.Date == currentDate.Date && e.UserId == userId);
                 _response.Status = true;
                 _response.StatusCode = HttpStatusCode.OK;

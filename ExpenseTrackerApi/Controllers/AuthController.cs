@@ -123,8 +123,8 @@ namespace ExpenseTrackerApi.Controllers
                 {
                     Users newUser = _mapper.Map<Users>(dto);
                     newUser.IsDeleted = false;
-                    newUser.CreatedAt = DateTime.Now;
-                    newUser.UpdatedAt = DateTime.Now;
+                    newUser.CreatedAt = DateTime.UtcNow;
+                    newUser.UpdatedAt = DateTime.UtcNow;
 
                     string passwordSalt = _passwordHasher.GenerateSalt();
                     string passwordHash = _passwordHasher.ComputeHash(dto.Password, passwordSalt, _pepperKey, 2);
@@ -214,7 +214,8 @@ namespace ExpenseTrackerApi.Controllers
         {
             try
             {
-                await _emailServiceProvider.SendVerifyEmail("sagargarate22@gmail.com");
+                var result = await _emailServiceProvider.SendVerifyEmail("sagargarate22@gmail.com");
+                result();
                 return Ok();
             }
             catch (Exception e)
