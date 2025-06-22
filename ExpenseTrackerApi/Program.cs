@@ -127,13 +127,17 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate(); // 👈 applies any pending migrations
 }
 
+// Configure the HTTP request pipeline.
+
+    app.UseSwagger();
+    app.UseSwaggerUI();
 
 
 app.UseRouting();
