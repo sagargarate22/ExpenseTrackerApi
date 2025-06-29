@@ -1,0 +1,36 @@
+name: Build .Net Api
+
+on:
+  push:
+    branches: ['main']
+  pull-request:
+    branches: ['main']
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: action/checkout@v3
+
+      - name: setup dotnet api
+        uses: action/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+      
+      - name: Install Dependencies
+        run: |
+          dotnet restore
+        
+      - name: Build 
+        run: |
+          dotnet build
+  
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploying
+        run: |
+          echo "Deploy"
+
