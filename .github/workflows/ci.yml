@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: action/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: setup dotnet api
-        uses: action/setup-dotnet@v3
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0.x
       
