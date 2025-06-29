@@ -8,6 +8,7 @@ using ExpenseTrackerApi.Services.PasswordEncrypter;
 using ExpenseTrackerApi.Services.Repository;
 using ExpenseTrackerApi.Services.Repository.IRepository;
 using Hangfire;
+using Hangfire.PostgreSql;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -79,12 +80,15 @@ builder.Services.AddSingleton(jwt);
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnectionString")));
+//builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnectionString")));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnectionString")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHangfire(opt =>
 {
-    opt.UseSqlServerStorage(builder.Configuration.GetConnectionString("DatabaseConnectionString"))
+    //opt.UseSqlServerStorage(builder.Configuration.GetConnectionString("DatabaseConnectionString"))
+    opt.UsePostgreSqlStorage(builder.Configuration.GetConnectionString("DatabaseConnectionString"))
         .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
         .UseSimpleAssemblyNameTypeSerializer()
         .UseRecommendedSerializerSettings();
@@ -123,13 +127,17 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate(); // 👈 applies any pending migrations
 }
 
+// Configure the HTTP request pipeline.
+
+    app.UseSwagger();
+    app.UseSwaggerUI();
 
 
 app.UseRouting();

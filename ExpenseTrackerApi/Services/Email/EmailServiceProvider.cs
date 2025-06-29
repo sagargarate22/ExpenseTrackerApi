@@ -84,7 +84,7 @@ namespace ExpenseTrackerApi.Services.Email
             foreach (var user in users)
             {
                 DailyDTO dailyReportDTO;
-                var expenses = await _expenseService.GetRecordsAsync(e => e.ExpenseDate.Date == DateTime.Now.Date && e.UserId == user.UserId);
+                var expenses = await _expenseService.GetRecordsAsync(e => e.ExpenseDate.Date == DateTime.UtcNow.Date && e.UserId == user.UserId);
                 if(expenses.Any())
                 {
                     var total = expenses.Sum(e => e.Amount);
@@ -114,7 +114,7 @@ namespace ExpenseTrackerApi.Services.Email
         public async Task SendMonthlyReport()
         {
             var users = await _userService.GetRecordsAsync();
-            var currDate = DateTime.Now.Date;
+            var currDate = DateTime.UtcNow;
             var startDate = _expenseService.GetStartOfMonth(currDate);
             foreach (var user in users)
             {

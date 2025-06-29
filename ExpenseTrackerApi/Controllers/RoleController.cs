@@ -50,8 +50,8 @@ namespace ExpenseTrackerApi.Controllers
 
                 Role role = _mapper.Map<Role>(dto);
                 role.IsDeleted = false;
-                role.CreatedAt = DateTime.Now;
-                role.UpdatedAt = DateTime.Now;
+                role.CreatedAt = DateTime.UtcNow;
+                role.UpdatedAt = DateTime.UtcNow;
 
                 await _roleServices.CreateAsync(role);
                 dto.RoleId = role.RoleId;
@@ -153,7 +153,7 @@ namespace ExpenseTrackerApi.Controllers
                 }
 
                 _mapper.Map(dto, exitRole);
-                exitRole.UpdatedAt = DateTime.Now;
+                exitRole.UpdatedAt = DateTime.UtcNow;
                 await _roleServices.CreateAsync(exitRole);
                 dto.RoleId = exitRole.RoleId;
                 _response.Status = true;
@@ -195,7 +195,7 @@ namespace ExpenseTrackerApi.Controllers
                 }
 
                 exitRole.IsDeleted = true;
-                exitRole.UpdatedAt = DateTime.Now;
+                exitRole.UpdatedAt = DateTime.UtcNow;
 
                 await _roleServices.UpdateAsync(exitRole); 
                 _response.Status = true;

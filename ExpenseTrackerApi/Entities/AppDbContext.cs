@@ -60,7 +60,38 @@ namespace ExpenseTrackerApi.Entities
                     CategoryName = "Others"
                 }
                 );
+
+            modelBuilder.Entity<Role>().HasData(
+                new Role()
+                {
+                    RoleId = 1,
+                    RoleName = "User",
+                    CreatedAt = new DateTime(2025, 6, 21, 7, 2, 31, 239, DateTimeKind.Utc),
+                    UpdatedAt = new DateTime(2025, 6, 21, 7, 2, 31, 239, DateTimeKind.Utc),
+                    IsActive = true,
+                    IsDeleted = false
+                },
+                new Role()
+                {
+                    RoleId = 2,
+                    RoleName = "Admin",
+                    CreatedAt = new DateTime(2025, 6, 21, 7, 2, 31, 239, DateTimeKind.Utc),
+                    UpdatedAt = new DateTime(2025, 6, 21, 7, 2, 31, 239, DateTimeKind.Utc),
+                    IsActive = true,
+                    IsDeleted = false
+                },
+                new Role()
+                {
+                    RoleId = 3,
+                    RoleName = "SuperAdmin",
+                    CreatedAt = new DateTime(2025, 6, 21, 7, 2, 31, 239, DateTimeKind.Utc),
+                    UpdatedAt = new DateTime(2025, 6, 21, 7, 2, 31, 239, DateTimeKind.Utc),
+                    IsActive = true,
+                    IsDeleted = false
+                }
+                );
         }
+
 
     }
 }
