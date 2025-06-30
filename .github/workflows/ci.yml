@@ -38,7 +38,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ExpenseTrackerApi/Dockerfile
+          context: ./ExpenseTrackerApi
           push: true
           tags: sagar116/expensetrakcer-api:latest
   
