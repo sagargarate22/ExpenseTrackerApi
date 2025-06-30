@@ -21,10 +21,10 @@ A full-featured Expense Tracker Web API that allows users to manage their daily 
 |------------------|-----------------------------|
 | Frontend         | HTML, Razor Views, Bootstrap |
 | Backend          | ASP.NET Core Web API         |
-| Database         | SQL Server                   |
+| Database         | Postgres                     |
 | ORM              | Entity Framework Core        |
 | Job Scheduling   | Hangfire                     |
-| Email            | SMTP (Outlook) + Razor View  |
+| Email            | SMTP (Gmail) + Razor View  |
 
 ---
 
