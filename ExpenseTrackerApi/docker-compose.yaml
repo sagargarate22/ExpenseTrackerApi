@@ -15,20 +15,24 @@ services:
   postgres-expense:
     image: postgres:alpine
     restart: always
-    container_name: postgres-expense
-    healthcheck:
-        test: ["CMD-SHELL", "pg_isready -U postgres"]
-        interval: 10s
-        timeout: 5s
-        retries: 5
+    ports:
+      - "5432:5432"
     environment:
-      POSTGRES_DB: expensedb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: qwerty
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports: 
-     - "5432:5432"
-    
+      - local_pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
 volumes:
- postgres_data:
+  local_pgdata:
+  pgadmin-data:
